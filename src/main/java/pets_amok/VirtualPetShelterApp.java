@@ -2,6 +2,12 @@ package pets_amok;
 
 import java.util.Scanner;
 
+// While we absolutely prefer you get a project done without tests than not get a project done at all, we want you to add tests to this
+// application.
+
+// Look for places where you have certain code repeated multiple times. For example, instead of calling the tickAllPets() method
+// after each user choice, you can have it called one time at the bottom of your game loop.
+
 public class VirtualPetShelterApp {
     private static VirtualPetShelter shelter = new VirtualPetShelter();
 
