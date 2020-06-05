@@ -24,9 +24,8 @@ public class VirtualPetShelterApp {
 
         while (!shelter.areNeedsTooHighForAnyPet()) {
 
-            Integer userSelection = askUserForPetInteraction();
-            performActionOnPet(userSelection);
-
+            performActionOnPet(askUserForPetInteraction());
+            shelter.tickAllPets();
             displayAllPetsInShelter();
 
         }
@@ -60,61 +59,51 @@ public class VirtualPetShelterApp {
 
 
         Scanner scanner = new Scanner(System.in);
-        int userSelection = Integer.valueOf(scanner.next());
 
-        return userSelection;
+        return Integer.valueOf(scanner.next());
     }
 
     private static void performActionOnPet(Integer userSelection) {
 
         if (userSelection.equals(1)) {
             shelter.feedAllOrganicPets();
-            shelter.tickAllPets();
             System.out.println("You fed all pets in shelter");
 
         } else if (userSelection.equals(2)) {
             shelter.waterAllOrganicPets();
-            shelter.tickAllPets();
             System.out.println("You watered all pets in shelter");
 
         } else if (userSelection.equals(3)) {
             shelter.bathroomBreakAllOrganicPets();
-            shelter.tickAllPets();
             System.out.println("You gave all pets in shelter a bathroom break ");
 
         } else if (userSelection.equals(4)) {
             shelter.walkAllDogs();
-            shelter.tickAllPets();
             System.out.println("You walked all dogs in shelter");
 
         } else if (userSelection.equals(5)) {
             shelter.cleanCagesForAllOrganicDogs();
-            shelter.tickAllPets();
             System.out.println("You cleaned all organic dog cages");
 
         } else if (userSelection.equals(6)) {
             shelter.oilAllRoboticPets();
-            shelter.tickAllPets();
             System.out.println("You oiled all robotic pets in shelter");
 
         } else if (userSelection.equals(7)) {
             System.out.println("Okay, which pet would you like to play with? ");
             String petToPlayWith = askUserWhichPetToInteractWith();
             shelter.playWithPet(petToPlayWith);
-            shelter.tickAllPets();
             System.out.println("You played with " + petToPlayWith);
 
         } else if (userSelection.equals(8)) {
             VirtualPet newPetToBePlacedInShelter = askUserForNewPetInfo();
             shelter.addHomelessPetToShelter(newPetToBePlacedInShelter);
-            shelter.tickAllPets();
             System.out.println("A pet named " + newPetToBePlacedInShelter.getPetName() + " has been placed in the shelter");
 
         } else if (userSelection.equals(9)) {
             System.out.println("Which Pet Would you like to give up for adoption");
             String petToGiveUpForAdoption = askUserWhichPetToInteractWith();
             shelter.giveUpPetForAdoption(petToGiveUpForAdoption);
-            shelter.tickAllPets();
             System.out.println("A pet named " + petToGiveUpForAdoption + " has been adopted by someone");
 
         } else if (userSelection.equals(10)) {

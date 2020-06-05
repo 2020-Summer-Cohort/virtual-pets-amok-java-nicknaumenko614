@@ -1,2 +1,0 @@
-package pets_amok;
-

@@ -28,10 +28,14 @@ public class VirtualPetShelter {
 
     }
 
+    protected Map <String, VirtualPet> getAllPetsInShelter(){
+        return allPetsInShelter;
+    }
+
 
     protected void listAllPetsInShelter() {
 
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
 
             if (pet instanceof OrganicCat) {
@@ -69,7 +73,7 @@ public class VirtualPetShelter {
     }
 
     protected void listAllPetNamesInShelter() {
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
             System.out.println(pet.getPetName());
         }
@@ -78,7 +82,7 @@ public class VirtualPetShelter {
 
     protected VirtualPet retrievePetByName(String requestedPetName) {
         VirtualPet pet = null;
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             String petName = mapEntry.getKey();
             if (requestedPetName.equalsIgnoreCase(petName)) {
                 pet = mapEntry.getValue();
@@ -104,7 +108,7 @@ public class VirtualPetShelter {
 
     protected Map<String, OrganicPet> getAllOrganicPets() {
         Map<String, OrganicPet> allOrganicPets = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
             if (pet instanceof OrganicDog || pet instanceof OrganicCat) {
                 allOrganicPets.put(pet.getPetName(), (OrganicPet) pet);
@@ -115,7 +119,7 @@ public class VirtualPetShelter {
 
     protected Map<String, RoboticPet> getAllRoboticPets() {
         Map<String, RoboticPet> allRoboticPets = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
             if (pet instanceof RoboticDog || pet instanceof RoboticCat) {
                 allRoboticPets.put(pet.getPetName(), (RoboticPet) pet);
@@ -126,7 +130,7 @@ public class VirtualPetShelter {
 
     protected Map<String, OrganicDog> getAllOrganicDogs() {
         Map<String, OrganicDog> allOrganicDogs = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
             if (pet instanceof OrganicDog) {
                 allOrganicDogs.put(pet.getPetName(), (OrganicDog) pet);
@@ -137,7 +141,7 @@ public class VirtualPetShelter {
 
     protected Map<String, Dog> getAllDogs() {
         Map<String, Dog> allDogs = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
             if (pet instanceof RoboticDog || pet instanceof OrganicDog) {
                 allDogs.put(pet.getPetName(), (Dog) pet);
@@ -194,7 +198,7 @@ public class VirtualPetShelter {
     }
 
     protected void tickAllPets() {
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
             pet.tick();
         }
@@ -202,7 +206,7 @@ public class VirtualPetShelter {
 
     protected boolean areNeedsTooHighForAnyPet() {
         boolean areNeedsTooHighForAnyPet = true;
-        for (Map.Entry<String, VirtualPet> mapEntry : allPetsInShelter.entrySet()) {
+        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
             VirtualPet pet = mapEntry.getValue();
             if (pet.areNeedsTooHigh()) {
                 areNeedsTooHighForAnyPet = false;
