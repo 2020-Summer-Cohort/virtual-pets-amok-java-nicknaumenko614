@@ -28,7 +28,7 @@ public class VirtualPetShelter {
 
     }
 
-    protected Map <String, VirtualPet> getAllPetsInShelter(){
+    protected Map<String, VirtualPet> getAllPetsInShelter() {
         return allPetsInShelter;
     }
 
@@ -106,89 +106,53 @@ public class VirtualPetShelter {
         }
     }
 
-    protected Map<String, OrganicPet> getAllOrganicPets() {
-        Map<String, OrganicPet> allOrganicPets = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
-            VirtualPet pet = mapEntry.getValue();
-            if (pet instanceof OrganicDog || pet instanceof OrganicCat) {
-                allOrganicPets.put(pet.getPetName(), (OrganicPet) pet);
-            }
-        }
-        return allOrganicPets;
-    }
-
-    protected Map<String, RoboticPet> getAllRoboticPets() {
-        Map<String, RoboticPet> allRoboticPets = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
-            VirtualPet pet = mapEntry.getValue();
-            if (pet instanceof RoboticDog || pet instanceof RoboticCat) {
-                allRoboticPets.put(pet.getPetName(), (RoboticPet) pet);
-            }
-        }
-        return allRoboticPets;
-    }
-
-    protected Map<String, OrganicDog> getAllOrganicDogs() {
-        Map<String, OrganicDog> allOrganicDogs = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
-            VirtualPet pet = mapEntry.getValue();
-            if (pet instanceof OrganicDog) {
-                allOrganicDogs.put(pet.getPetName(), (OrganicDog) pet);
-            }
-        }
-        return allOrganicDogs;
-    }
-
-    protected Map<String, Dog> getAllDogs() {
-        Map<String, Dog> allDogs = new HashMap<>();
-        for (Map.Entry<String, VirtualPet> mapEntry : getAllPetsInShelter().entrySet()) {
-            VirtualPet pet = mapEntry.getValue();
-            if (pet instanceof RoboticDog || pet instanceof OrganicDog) {
-                allDogs.put(pet.getPetName(), (Dog) pet);
-            }
-        }
-        return allDogs;
-    }
 
     protected void walkAllDogs() {
-        for (Map.Entry<String, Dog> mapEntry : getAllDogs().entrySet()) {
-            Dog pet = mapEntry.getValue();
-            pet.walk();
+        for (VirtualPet petToWalk : allPetsInShelter.values()) {
+            if (petToWalk instanceof Dog) {
+                ((Dog) petToWalk).walk();
+            }
         }
     }
 
     protected void cleanCagesForAllOrganicDogs() {
-        for (Map.Entry<String, OrganicDog> mapEntry : getAllOrganicDogs().entrySet()) {
-            OrganicDog pet = mapEntry.getValue();
-            pet.cleanOrganicDogCage();
+        for (VirtualPet petToCleanCage : allPetsInShelter.values()) {
+            if (petToCleanCage instanceof OrganicDog) {
+                ((OrganicDog) petToCleanCage).cleanOrganicDogCage();
+            }
         }
     }
 
     protected void oilAllRoboticPets() {
-        for (Map.Entry<String, RoboticPet> mapEntry : getAllRoboticPets().entrySet()) {
-            RoboticPet pet = mapEntry.getValue();
-            pet.oilPet();
+        for (VirtualPet petToOil : allPetsInShelter.values()) {
+            if (petToOil instanceof RoboticPet) {
+                ((RoboticPet) petToOil).oilPet();
+            }
         }
     }
 
     protected void feedAllOrganicPets() {
-        for (Map.Entry<String, OrganicPet> mapEntry : getAllOrganicPets().entrySet()) {
-            OrganicPet pet = mapEntry.getValue();
-            pet.feedPet();
+        for (VirtualPet petToFeed : allPetsInShelter.values()) {
+            if (petToFeed instanceof OrganicPet) {
+                ((OrganicPet) petToFeed).feedPet();
+            }
         }
     }
 
     protected void waterAllOrganicPets() {
-        for (Map.Entry<String, OrganicPet> mapEntry : getAllOrganicPets().entrySet()) {
-            OrganicPet pet = mapEntry.getValue();
-            pet.givePetWater();
+        for (VirtualPet petToWater : allPetsInShelter.values()) {
+            if (petToWater instanceof OrganicPet) {
+                ((OrganicPet) petToWater).givePetWater();
+            }
         }
     }
 
+
     protected void bathroomBreakAllOrganicPets() {
-        for (Map.Entry<String, OrganicPet> mapEntry : getAllOrganicPets().entrySet()) {
-            OrganicPet pet = mapEntry.getValue();
-            pet.givePetBathroomBreak();
+        for (VirtualPet petToBathroomBreak : allPetsInShelter.values()) {
+            if (petToBathroomBreak instanceof OrganicPet) {
+                ((OrganicPet) petToBathroomBreak).givePetBathroomBreak();
+            }
         }
     }
 

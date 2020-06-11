@@ -4,9 +4,15 @@ import java.util.Scanner;
 
 // While we absolutely prefer you get a project done without tests than not get a project done at all, we want you to add tests to this
 // application.
+//
+// - I added tests where possible, although I couldn't figure out how to correctly test abstract class methods,
+//   and did not have enough time in my one-on-one to ask the instructors.
 
 // Look for places where you have certain code repeated multiple times. For example, instead of calling the tickAllPets() method
 // after each user choice, you can have it called one time at the bottom of your game loop.
+//
+// - I refactored a number of methods, specifically the Tick method and most of the methods that are used to perform actions on pets.
+
 
 public class VirtualPetShelterApp {
     private static VirtualPetShelter shelter = new VirtualPetShelter();
@@ -118,8 +124,7 @@ public class VirtualPetShelterApp {
 
         shelter.listAllPetNamesInShelter();
         Scanner scanner = new Scanner(System.in);
-        String userSelection = scanner.next();
-        return userSelection;
+        return scanner.next();
     }
 
     private static VirtualPet askUserForNewPetInfo() {
@@ -135,7 +140,7 @@ public class VirtualPetShelterApp {
 
         VirtualPet newPet = null;
         scanner = new Scanner(System.in);
-        int typeOfNewPet = Integer.valueOf(scanner.next());
+        int typeOfNewPet = Integer.parseInt(scanner.next());
         if (typeOfNewPet == 1) {
             newPet = new OrganicDog(nameOfNewPet, 20, 20, 20, 20, 20, 20);
 
